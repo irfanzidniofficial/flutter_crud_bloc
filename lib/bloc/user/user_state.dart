@@ -1,3 +1,5 @@
+
+
 part of 'user_bloc.dart';
 
 abstract class UserState extends Equatable {
@@ -11,4 +13,16 @@ abstract class UserState extends Equatable {
 
 class UserInitial extends UserState {
   UserInitial(super.allUsers);
+}
+
+class UserLoading extends UserState {
+  UserLoading(super.allUsers);
+}
+
+class UserFinish extends UserState {
+  UserFinish(super.allUsers);
+}
+
+class UserError extends UserState {
+  UserError(super.allUsers);
 }

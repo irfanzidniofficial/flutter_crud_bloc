@@ -1,10 +1,16 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
+import '../../bloc/export.dart';
 
 class AddPage extends StatelessWidget {
-  const AddPage({super.key});
+  AddPage({super.key});
+
+  final TextEditingController nameC = TextEditingController();
+  final TextEditingController ageC = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    UserBloc userB = context.read<UserBloc>();
     return Scaffold(
       appBar: AppBar(
         title: const Text('ADD USERS'),
@@ -12,8 +18,9 @@ class AddPage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
-          const TextField(
-            decoration: InputDecoration(
+          TextField(
+            controller: nameC,
+            decoration: const InputDecoration(
               labelText: "Name",
               border: OutlineInputBorder(),
             ),
@@ -21,8 +28,10 @@ class AddPage extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          const TextField(
-            decoration: InputDecoration(
+          TextField(
+            controller: ageC,
+            keyboardType: TextInputType.number,
+            decoration: const InputDecoration(
               labelText: "Age",
               border: OutlineInputBorder(),
             ),
@@ -31,7 +40,18 @@ class AddPage extends StatelessWidget {
             height: 20,
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              userB.add(
+                AddUserEvent(
+                  User(
+                    id: Random().nextInt(99999),
+                    name: nameC.text,
+                    age: int.parse(ageC.text),
+                  ),
+                ),
+              );
+              Navigator.pop(context);
+            },
             child: const Text('ADD USER'),
           ),
         ],
