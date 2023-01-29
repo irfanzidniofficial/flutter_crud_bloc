@@ -5,7 +5,9 @@ part 'user_event.dart';
 part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
-  UserBloc() : super(UserInitial(const [])) {
+  // Gaboleh dikasih const karena data ini bakal berubah2
+  UserBloc() : super(UserInitial([])) {
+    // UserBloc() : super(UserInitial(const [])) {
     // ADD USER
     on<AddUserEvent>((event, emit) {
       try {
