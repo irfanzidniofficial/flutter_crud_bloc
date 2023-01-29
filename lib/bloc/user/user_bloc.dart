@@ -18,5 +18,19 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         emit(UserError(state.allUsers));
       }
     });
+     // DELETE USER
+
+     on<DeleteUserEvent>((event, emit) {
+      try {
+        emit(UserLoading(state.allUsers));
+        state.allUsers.removeWhere((element) => element == event.user);
+        emit(UserFinish(state.allUsers));
+      } catch (e) {
+        emit(UserError(state.allUsers));
+      }
+    });
   }
-}
+   
+   
+  }
+
