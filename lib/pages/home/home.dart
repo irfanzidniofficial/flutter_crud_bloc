@@ -34,7 +34,9 @@ class HomePage extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const EditPage()),
+                    MaterialPageRoute(
+                      builder: (context) => EditPage(user),
+                    ),
                   );
                 },
                 leading: CircleAvatar(

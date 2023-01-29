@@ -12,7 +12,12 @@ class AddUserEvent extends UserEvent {
   final User user;
 }
 
+class EditUserEvent extends UserEvent {
+  const EditUserEvent(this.user);
+  final User user;
+}
+
 class DeleteUserEvent extends UserEvent {
-  DeleteUserEvent(this.user);
+  const DeleteUserEvent(this.user);
   final User user;
 }
